@@ -38,5 +38,23 @@ class VehiclePilots(Base):
     character = relationship(Character)
     vehicle = relationship(Vehicle)
 
+class FavoritesVehicles(Base):
+    __tablename__= 'favoritesVehicles'
+    id = Column(Integer, primary_key=True)
+    vehicle_id = Column(Integer, ForeignKey('vehicle.id'))
+    vehicle = relationship(Vehicle)
+
+class FavoritesPlanets(Base):
+    __tablename__= 'favoritesPlanets'
+    id = Column(Integer, primary_key=True)
+    planet_id = Column(Integer, ForeignKey('planet.id'))
+    planet = relationship(Planet)
+
+class FavoritesCharacters(Base):
+    __tablename__= 'favoritesCharacters'
+    id = Column(Integer, primary_key=True)
+    character_id = Column(Integer, ForeignKey('character.id'))
+    character = relationship(Character)
+    
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
